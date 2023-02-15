@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 async function connect() {
   try {
     await mongoose.connect(
-     process.env.MONGOSRVPARAM,
+      "mongodb+srv://ITQuocTien:QuocTien123@cluster0.gdvmxrg.mongodb.net/QuanLyNhanVien",
       {
         useNewUrlParser: true,
         // useCreateIndex: true,
