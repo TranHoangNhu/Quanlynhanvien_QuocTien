@@ -1,0 +1,40 @@
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr
+      class="text-center text-warning align-middle"
+      style="font-size: 1.15rem;"
+    >
+      <th scope="col">STT</th>
+      <th scope="col">Tên nhân viên</th>
+      <th scope="col">Tổng số ngày</th>
+      <th scope="col">Số ngày nghỉ</th>
+      <th scope="col">Làm thêm cuối tuần</th>
+      <th scope="col">Lương căn bản</th>
+      <th scope="col">Lương thưởng</th>
+      <th scope="col">Lương trừ(Ứng, phạt,...)</th>
+      <th scope="col">Tiền thực nhận</th>
+    </tr>
+  </thead>
+  <tbody class="text-center">
+    {{#each users}}
+      <tr>
+        <th scope="row" class="align-middle">{{sum @index 1}}</th>
+        <td class="align-middle">{{this.displayName}}</td>
+        <td class="align-middle">{{this.totalDay}}</td>
+        <td class="align-middle">{{this.offDay}}</td>
+        <td class="align-middle">{{this.weekendDay}}</td>
+        <td class="align-middle">{{tienTe this.basicSalary}}</td>
+        <td class="align-middle">{{this.giftSalary}}</td>
+        <td class="align-middle">{{this.advanceSalary}}</td>
+        <td class="align-middle">{{netSalary
+            this.basicSalary
+            this.giftSalary
+            this.advanceSalary
+            this.weekendDay
+            this.offDay
+          }}</td>
+        {{!-- <td class="align-middle">{{this.netSalary}}</td> --}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

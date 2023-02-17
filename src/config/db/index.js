@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-// const dotenvParam = require("dotenv");
-// dotenvParam.config();
 
 async function connect() {
   try {

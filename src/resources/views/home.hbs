@@ -1,9 +1,13 @@
       <form class="form-inline my-2 my-lg-0 mr-5 mb-lg-3">
         <div class="input-group mb-3 w-100 ml-5">
           <input type="text" class="form-control py-4">
-          <button type="submit" class="btn bg-white px-3"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <button type="button" class="btn bg-white px-3"><i class="fa-solid fa-magnifying-glass"></i></span>
         </div>
       </form>
+            <!-- Button trigger modal createNV -->
+ <button type="button" class="btn btn-success createNV float-right my-3 rounded mr-3" data-toggle="modal" data-target="#modalCreateNV">
+  <i class="fa-solid fa-user-plus"></i>
+</button>
       <table class="table table-bordered table-dark">
         <thead>
           <tr class="text-center text-warning align-middle" style="font-size: 1.15rem;">
@@ -16,41 +20,92 @@
           </tr>
         </thead>
         <tbody class="text-center">
+          {{#each users}}
           <tr>
-            <th scope="row">1</th>
-            <td class="align-middle">Ngân</td>
-            <td class="align-middle">8.000.000 đ</td>
-            <td class="align-middle">Nhân viên</td>
-            <td class="align-middle">01/01/2023</td>
+            <th scope="row" class="align-middle">{{sum @index 1}}</th>
+            <td class="align-middle">{{this.displayName}}</td>
+            <td class="align-middle">{{this.basicSalary}}</td>
+            <td class="align-middle">{{this.position}}</td>
+            <td class="align-middle">{{this.startDay}}</td>
             <td class="align-middle">
-              <button class="btn btn-danger my-2"><i class="fa-solid fa-trash-can"></i></button>
-              <button class="btn btn-success my-2" data-toggle="modal" data-target="#myModal"><i
-                  class="fa-regular fa-pen-to-square"></i></button>
+              <a href="#" class="btn btn-danger my-2"><i class="fa-solid fa-trash-can"></i></a>
+              <a href="/users/{{this._id}}/edit" class="btn btn-success my-2" data-toggle="modal" data-target="#modalUpdateNV"><i
+                  class="fa-regular fa-pen-to-square"></i></a>
             </td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td class="align-middle">Tiên</td>
-            <td class="align-middle">8.000.000 đ</td>
-            <td class="align-middle">Nhân viên</td>
-            <td class="align-middle">01/01/2023</td>
-            <td class="align-middle">
-              <button class="btn btn-danger my-2"><i class="fa-solid fa-trash-can"></i></button>
-              <button class="btn btn-success my-2" data-toggle="modal" data-target="#myModal"><i
-                  class="fa-regular fa-pen-to-square"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td class="align-middle">Phương Anh</td>
-            <td class="align-middle">8.000.000 đ</td>
-            <td class="align-middle">Nhân viên</td>
-            <td class="align-middle">01/01/2023</td>
-            <td class="align-middle">
-              <button class="btn btn-danger my-2"><i class="fa-solid fa-trash-can"></i></button>
-              <button class="btn btn-success my-2" data-toggle="modal" data-target="#myModal"><i
-                  class="fa-regular fa-pen-to-square"></i></button>
-            </td>
-          </tr>
+          {{/each}}
         </tbody>
       </table>
+
+<!-- Modal createNV -->
+<div class="modal fade" id="modalCreateNV" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Thêm nhân viên mới</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="users/create">  
+        <div class="form-group">
+            <label for="displayName">Tên Nhân Viên</label>
+            <input type="text" class="form-control" id="displayName" name="displayName">
+        </div>
+        <div class="form-group">
+            <label for="basicSalary">Lương căn bản</label>
+            <input type="number" class="form-control" id="basicSalary" name="basicSalary">
+        </div>
+        <div class="form-group">
+            <label for="position">Chức vụ</label>
+            <input type="text" class="form-control" id="position" name="position">
+        </div>
+        <div class="form-group">
+            <label for="startDay">Ngày vào làm</label>
+            <input type="text" class="form-control" id="startDay" name="startDay">
+        </div>
+        <button type="submit" class="btn btn-success float-right my-3">Thêm mới</button>
+    </form>
+      </div>
+      {{!-- <div class="modal-footer">
+      </div> --}}
+    </div>
+  </div>
+</div>
+
+<!-- Modal updateNV -->
+<div class="modal fade" id="modalUpdateNV" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật nhân viên</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/users/{{user._id}}?_method=PUT">  
+        <div class="form-group">
+            <label for="displayName">Tên Nhân Viên</label>
+            <input type="text" class="form-control" value="{{user.displayName}}" id="displayName" name="displayName">
+        </div>
+        <div class="form-group">
+            <label for="basicSalary">Lương căn bản</label>
+            <input type="number" class="form-control" value="{{user.basicSalary}}" id="basicSalary" name="basicSalary">
+        </div>
+        <div class="form-group">
+            <label for="position">Chức vụ</label>
+            <input type="text" class="form-control" value="{{user.position}}" id="position" name="position">
+        </div>
+        <div class="form-group">
+            <label for="startDay">Ngày vào làm</label>
+            <input type="text" class="form-control" value="{{user.startDay}}" id="startDay" name="startDay">
+        </div>
+        <button type="submit" class="btn btn-success float-right my-3">Cập nhật</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+
