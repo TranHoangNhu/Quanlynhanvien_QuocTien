@@ -1,0 +1,44 @@
+<h1 class="text-center mt-3">CẬP NHẬT THÔNG TIN NHÂN VIÊN</h1>
+<form method="post" action="/users/{{user._id}}?_method=PUT">
+  <div class="form-group">
+    <label for="displayName">Tên Nhân Viên</label>
+    <input
+      type="text"
+      class="form-control"
+      value="{{user.displayName}}"
+      id="displayName"
+      name="displayName"
+    />
+  </div>
+  <div class="form-group">
+    <label for="basicSalary">Lương căn bản</label>
+    <input
+      type="number"
+      class="form-control"
+      value="{{user.basicSalary}}"
+      id="basicSalary"
+      name="basicSalary"
+    />
+  </div>
+  <div class="form-group">
+    <label for="position">Chức vụ</label>
+    <input
+      type="text"
+      class="form-control"
+      value="{{user.position}}"
+      id="position"
+      name="position"
+    />
+  </div>
+  <div class="form-group">
+    <label for="startDay">Ngày vào làm</label>
+    <input
+      type="text"
+      class="form-control"
+      value="{{user.startDay}}"
+      id="startDay"
+      name="startDay"
+    />
+  </div>
+  <button type="submit" class="btn btn-success float-right my-3">Cập nhật</button>
+</form>

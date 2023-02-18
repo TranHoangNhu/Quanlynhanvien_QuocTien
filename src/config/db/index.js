@@ -11,10 +11,10 @@ async function connect() {
       }
     );
     
-    console.log("Connect successfully!!!");
+    console.log("Connect database successfully!!!");
   } catch (error) {
-    console.log("Connect fairlure!!!");
-    console.log(process.env.MONGODBSRV);
+    console.log("Connect database failed!!!");
+    // console.log(process.env.MONGODBSRV);
   }
 }
 

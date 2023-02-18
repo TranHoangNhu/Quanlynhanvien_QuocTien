@@ -28,8 +28,8 @@
             <td class="align-middle">{{this.position}}</td>
             <td class="align-middle">{{this.startDay}}</td>
             <td class="align-middle">
-              <a href="#" class="btn btn-danger my-2"><i class="fa-solid fa-trash-can"></i></a>
-              <a href="/users/{{this._id}}/edit" class="btn btn-success my-2" data-toggle="modal" data-target="#modalUpdateNV"><i
+              <a href="" class="btn btn-danger my-2" data-toggle="modal" data-iddelete={{this._id}} data-target="#modalDeleteNV"><i class="fa-solid fa-trash-can"></i></a>
+              <a href="/users/{{this._id}}/edit" class="btn btn-success my-2 btnUpdateNV"><i
                   class="fa-regular fa-pen-to-square"></i></a>
             </td>
           </tr>
@@ -74,38 +74,45 @@
   </div>
 </div>
 
-<!-- Modal updateNV -->
-<div class="modal fade" id="modalUpdateNV" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+{{!-- Confirm delete course --}}
+<div id="modalDeleteNV" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật nhân viên</h5>
+      {{!-- <div class="modal-header">
+        <h5 class="modal-title">Xóa khóa học?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
+      </div> --}}
       <div class="modal-body">
-        <form method="post" action="/users/{{user._id}}?_method=PUT">  
-        <div class="form-group">
-            <label for="displayName">Tên Nhân Viên</label>
-            <input type="text" class="form-control" value="{{user.displayName}}" id="displayName" name="displayName">
-        </div>
-        <div class="form-group">
-            <label for="basicSalary">Lương căn bản</label>
-            <input type="number" class="form-control" value="{{user.basicSalary}}" id="basicSalary" name="basicSalary">
-        </div>
-        <div class="form-group">
-            <label for="position">Chức vụ</label>
-            <input type="text" class="form-control" value="{{user.position}}" id="position" name="position">
-        </div>
-        <div class="form-group">
-            <label for="startDay">Ngày vào làm</label>
-            <input type="text" class="form-control" value="{{user.startDay}}" id="startDay" name="startDay">
-        </div>
-        <button type="submit" class="btn btn-success float-right my-3">Cập nhật</button>
-    </form>
+        <p>Bạn chắc chắn muốn xóa nhân viên này?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button id="btn-delete-user" type="button" class="btn btn-danger">Xóa bỏ</button>
       </div>
     </div>
   </div>
 </div>
 
+{{!-- Delete hidden form --}}
+<form name="delete-user-form" method="POST"></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var userId;
+        var deleteForm = document.forms['delete-user-form'];
+        var btnDeleteUser = document.getElementById('btn-delete-user');
+        // When dialog confirm clicked
+        $('#modalDeleteNV').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            userId = button.data('iddelete');
+        });
+        
+        // When delete user btn clicked
+        btnDeleteUser.onclick = function () {
+            deleteForm.action = `/users/${userId}?_method=DELETE`;
+            deleteForm.submit();
+        }
+    });
+</script>
