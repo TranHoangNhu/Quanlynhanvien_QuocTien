@@ -33,11 +33,7 @@ app.engine(
       netSalary: (basic, gift, adv, weekend, off) => {
         //basic: lương cơ bản, gift: lương thưởng, adv: lương trừ, weekend: số ngày thêm cuối tuần, off: số ngày nghỉ
         return (
-          basic +
-          gift +
-          (basic / 30) * weekend -
-          adv -
-          (basic / 30) * off
+          basic + gift + (basic / 30) * weekend - (basic / 30) * adv - (basic / 30) * off
         ).toLocaleString("vi", {
           style: "currency",
           currency: "VND",
