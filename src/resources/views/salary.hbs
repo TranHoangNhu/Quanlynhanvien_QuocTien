@@ -1,40 +1,145 @@
-<table class="table table-bordered table-dark">
-  <thead>
-    <tr
-      class="text-center text-warning align-middle"
-      style="font-size: 1.15rem;"
-    >
-      <th scope="col">STT</th>
-      <th scope="col">Tên nhân viên</th>
-      <th scope="col">Tổng số ngày</th>
-      <th scope="col">Số ngày nghỉ</th>
-      <th scope="col">Làm thêm cuối tuần</th>
-      <th scope="col">Lương căn bản</th>
-      <th scope="col">Lương thưởng</th>
-      <th scope="col">Lương trừ(Ứng, phạt,...)</th>
-      <th scope="col">Tiền thực nhận</th>
-    </tr>
-  </thead>
-  <tbody class="text-center">
-    {{#each users}}
-      <tr>
-        <th scope="row" class="align-middle">{{sum @index 1}}</th>
-        <td class="align-middle">{{this.displayName}}</td>
-        <td class="align-middle">{{this.totalDay}}</td>
-        <td class="align-middle">{{this.offDay}}</td>
-        <td class="align-middle">{{this.weekendDay}}</td>
-        <td class="align-middle">{{this.basicSalary}}</td>
-        <td class="align-middle">{{this.giftSalary}}</td>
-        <td class="align-middle">{{this.advanceSalary}}</td>
-        <td class="align-middle">{{netSalary
-            this.basicSalary
-            this.giftSalary
-            this.advanceSalary
-            this.weekendDay
-            this.offDay
-          }}</td>
-        {{!-- <td class="align-middle">{{this.netSalary}}</td> --}}
+<div class="table-responsive-md">
+  <table class="table table-bordered table-dark">
+    <thead>
+      <tr
+        class="text-center text-warning align-middle"
+        style="font-size: 1.15rem;"
+      >
+        <th scope="col">STT</th>
+        <th scope="col">Tên nhân viên</th>
+        <th scope="col">Tổng số ngày</th>
+        <th scope="col">Số ngày nghỉ</th>
+        <th scope="col">Làm thêm cuối tuần</th>
+        <th scope="col">Lương căn bản</th>
+        <th scope="col">Lương thưởng</th>
+        <th scope="col">Lương trừ(Ứng, phạt,...)</th>
+        <th scope="col">Tiền thực nhận</th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
+    </thead>
+    <tbody class="text-center">
+      {{#each users}}
+        <tr>
+          <th scope="row" class="align-middle">{{sum @index 1}}</th>
+          <td class="align-middle">{{this.displayName}}</td>
+          <td class="align-middle">{{this.totalDay}}</td>
+          <td class="align-middle bg-secondary editMode">
+            <span>{{this.offDay}}</span>
+            <form method="post" action="/salary/{{this._id}}/salaryEdit?_method=PUT" class="d-none">
+              <div class="input-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  value="{{this.offDay}}"
+                  id="offDay"
+                  name="offDay"
+                />
+                <div class="input-group-prepend">
+                  <button type="submit" class="btn text-success btn-light"><i
+                      class="fa-solid fa-check"
+                    ></i></button>
+                </div>
+              </div>
+            </form>
+          </td>
+          <td class="align-middle bg-secondary editMode">
+            <span>{{this.weekendDay}}</span>
+            <form method="post" action="/salary/{{this._id}}/salaryEdit?_method=PUT" class="d-none">
+              <div class="input-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  value="{{this.weekendDay}}"
+                  id="weekendDay"
+                  name="weekendDay"
+                />
+                <div class="input-group-prepend">
+                  <button type="submit" class="btn text-success btn-light"><i
+                      class="fa-solid fa-check"
+                    ></i></button>
+                </div>
+              </div>
+            </form>
+          </td>
+          <td class="align-middle">{{this.basicSalary}}</td>
+          <td class="align-middle bg-secondary editMode">
+            <span>{{this.giftSalary}}</span>
+            <form method="post" action="/salary/{{this._id}}/salaryEdit?_method=PUT" class="d-none">
+              <div class="input-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  value="{{this.giftSalary}}"
+                  id="giftSalary"
+                  name="giftSalary"
+                />
+                <div class="input-group-prepend">
+                  <button type="submit" class="btn text-success btn-light"><i
+                      class="fa-solid fa-check"
+                    ></i></button>
+                </div>
+              </div>
+            </form>
+          </td>
+          <td class="align-middle bg-secondary editMode">
+            <span>{{this.advanceSalary}}</span>
+            <form method="post" action="/salary/{{this._id}}/salaryEdit?_method=PUT" class="d-none">
+              <div class="input-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  value="{{this.advanceSalary}}"
+                  id="advanceSalary"
+                  name="advanceSalary"
+                />
+                <div class="input-group-prepend">
+                  <button type="submit" class="btn text-success btn-light"><i
+                      class="fa-solid fa-check"
+                    ></i></button>
+                </div>
+              </div>
+            </form>
+          </td>
+          <td class="align-middle">{{netSalary
+              this.basicSalary
+              this.giftSalary
+              this.advanceSalary
+              this.weekendDay
+              this.offDay
+            }}</td>
+          {{!-- <td class="align-middle">{{this.netSalary}}</td> --}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<div class="rows">
+  <table class="table table-bordered table-dark mt-5 col-3">
+    <thead>
+      <tr
+        class="text-center text-warning align-middle"
+        style="font-size: 1.15rem;"
+      >
+        <th scope="col">GHI CHÚ</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr>
+        <td class="align-middle bg-secondary">DOUBLE CLICK ĐỂ SỬA</td>
+      </tr>
+      <tr>
+        <td class="align-middle">CHỈ CÓ THỂ XEM</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      $(".editMode").dblclick(function() {
+          //console.log($(this));
+          $(this).children()[0].className = "d-none";
+          $(this).children()[1].classList.remove("d-none");
+      });
+    });
+</script>

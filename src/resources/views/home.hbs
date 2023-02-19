@@ -8,15 +8,16 @@
  <button type="button" class="btn btn-success createNV float-right my-3 rounded mr-3" data-toggle="modal" data-target="#modalCreateNV">
   <i class="fa-solid fa-user-plus"></i>
 </button>
+    <div class="table-responsive-md">
       <table class="table table-bordered table-dark">
         <thead>
-          <tr class="text-center text-warning align-middle" style="font-size: 1.15rem;">
-            <th scope="col">STT</th>
-            <th scope="col">Tên nhân viên</th>
-            <th scope="col">Lương căn bản</th>
-            <th scope="col">Chức vụ</th>
-            <th scope="col">ngày vào làm</th>
-            <th scope="col"><i class="fa-solid fa-sliders"></i></th>
+          <tr class="text-center text-warning align-middle" style="font-size: 1rem;">
+            <td scope="col" class="py-3">STT</td>
+            <td scope="col" class="py-3">TÊN NHÂN VIÊN</td>
+            <td scope="col" class="py-3">LƯƠNG CĂN BẢN</td>
+            <td scope="col" class="py-3">CHỨC VỤ</td>
+            <td scope="col" class="py-3">NGÀY VÀO LÀM</td>
+            <td scope="col" class="py-3"><i class="fa-solid fa-sliders"></i></td>
           </tr>
         </thead>
         <tbody class="text-center">
@@ -35,7 +36,8 @@
           </tr>
           {{/each}}
         </tbody>
-      </table>
+      </table> 
+    </div>
 
 <!-- Modal createNV -->
 <div class="modal fade" id="modalCreateNV" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

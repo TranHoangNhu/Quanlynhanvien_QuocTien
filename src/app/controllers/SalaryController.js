@@ -14,6 +14,11 @@ class salaryController {
       })
       .catch(next);
   }
+  update(req, res, next) {
+    User.updateOne({ _id: req.params.id }, req.body)
+      .then(() => res.redirect("/salary"))
+      .catch(next);
+  }
 }
 
 module.exports = new salaryController();
