@@ -31,6 +31,7 @@ app.engine(
     helpers: {
       sum: (a, b) => a + b,
       netSalary: (basic, gift, adv, weekend, off) => {
+        //basic: lương cơ bản, gift: lương thưởng, adv: lương trừ, weekend: số ngày thêm cuối tuần, off: số ngày nghỉ
         return (
           basic +
           gift +
