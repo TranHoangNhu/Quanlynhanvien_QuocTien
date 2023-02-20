@@ -24,7 +24,11 @@
           <td class="align-middle">{{this.totalDay}}</td>
           <td class="align-middle bg-secondary editMode">
             <span>{{this.offDay}}</span>
-            <form method="post" action="/salary/{{this._id}}/salaryEdit?_method=PUT" class="d-none">
+            <form
+              method="post"
+              action="/salary/{{this._id}}/salaryEdit?_method=PUT"
+              class="d-none"
+            >
               <div class="input-group">
                 <input
                   type="number"
@@ -43,7 +47,11 @@
           </td>
           <td class="align-middle bg-secondary editMode">
             <span>{{this.weekendDay}}</span>
-            <form method="post" action="/salary/{{this._id}}/salaryEdit?_method=PUT" class="d-none">
+            <form
+              method="post"
+              action="/salary/{{this._id}}/salaryEdit?_method=PUT"
+              class="d-none"
+            >
               <div class="input-group">
                 <input
                   type="number"
@@ -60,10 +68,14 @@
               </div>
             </form>
           </td>
-          <td class="align-middle">{{this.basicSalary}}</td>
+          <td class="align-middle">{{currency this.basicSalary 1}}</td>
           <td class="align-middle bg-secondary editMode">
             <span>{{this.giftSalary}}</span>
-            <form method="post" action="/salary/{{this._id}}/salaryEdit?_method=PUT" class="d-none">
+            <form
+              method="post"
+              action="/salary/{{this._id}}/salaryEdit?_method=PUT"
+              class="d-none"
+            >
               <div class="input-group">
                 <input
                   type="number"
@@ -82,7 +94,11 @@
           </td>
           <td class="align-middle bg-secondary editMode">
             <span>{{this.advanceSalary}}</span>
-            <form method="post" action="/salary/{{this._id}}/salaryEdit?_method=PUT" class="d-none">
+            <form
+              method="post"
+              action="/salary/{{this._id}}/salaryEdit?_method=PUT"
+              class="d-none"
+            >
               <div class="input-group">
                 <input
                   type="number"
@@ -105,6 +121,7 @@
               this.advanceSalary
               this.weekendDay
               this.offDay
+              this.totalDay
             }}</td>
           {{!-- <td class="align-middle">{{this.netSalary}}</td> --}}
         </tr>
@@ -135,11 +152,8 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      $(".editMode").dblclick(function() {
-          //console.log($(this));
-          $(this).children()[0].className = "d-none";
-          $(this).children()[1].classList.remove("d-none");
-      });
-    });
+  document.addEventListener('DOMContentLoaded', function() {
+  $(".editMode").dblclick(function() { //console.log($(this));
+  $(this).children()[0].className = "d-none";
+  $(this).children()[1].classList.remove("d-none"); }); });
 </script>

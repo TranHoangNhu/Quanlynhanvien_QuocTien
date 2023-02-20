@@ -30,11 +30,22 @@ app.engine(
     extname: ".hbs",
     helpers: {
       sum: (a, b) => a + b,
-      netSalary: (basic, gift, adv, weekend, off) => {
+      currency: (c, d) =>
+        (c * d).toLocaleString("vi", { style: "currency", currency: "VND" }),
+      netSalary: (basic, gift, adv, weekend, off, day) => {
         //basic: lương cơ bản, gift: lương thưởng, adv: lương trừ, weekend: số ngày thêm cuối tuần, off: số ngày nghỉ
-        return (
-          basic + gift + (basic / 30) * weekend - (basic / 30) * adv - (basic / 30) * off
-        ).toLocaleString("vi", {
+        const salaryPerDay = Number(basic / day) * 100;
+        const netSalary =
+          basic * 100 +
+          (gift * 100 -
+            adv * 100 -
+            (salaryPerDay * off) / 100 +
+            (salaryPerDay * weekend) / 100);
+        // Math.pow(salaryPerDay, weekend) / 100 -
+        // Math.pow(salaryPerDay, adv) / 100 -
+        // Math.pow(salaryPerDay, off) / 100;
+        const netSalary_tmp = Number(netSalary) / 100; //.toFixed(0)
+        return netSalary_tmp.toLocaleString("vi", {
           style: "currency",
           currency: "VND",
         });
