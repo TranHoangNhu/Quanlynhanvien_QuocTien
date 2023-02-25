@@ -14,6 +14,7 @@
         <th scope="col">Lương thưởng</th>
         <th scope="col">Lương trừ(Ứng, phạt,...)</th>
         <th scope="col">Tiền thực nhận</th>
+        <th scope="col">Xuất bản in (PDF)</th>
       </tr>
     </thead>
     <tbody class="text-center">
@@ -123,7 +124,7 @@
               this.offDay
               this.totalDay
             }}</td>
-          {{!-- <td class="align-middle">{{this.netSalary}}</td> --}}
+          <td class="align-middle"><button class="btn text-white" style="color: #00f700 !important;"><i class="fa-regular fa-file-pdf"></i> <i class="fa-solid fa-arrow-down"></i></button></td>
         </tr>
       {{/each}}
     </tbody>
