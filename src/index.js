@@ -39,8 +39,8 @@ app.engine(
           basic * 100 +
           (gift * 100 -
             adv * 100 -
-            (salaryPerDay * off) / 100 +
-            (salaryPerDay * weekend) / 100);
+            (salaryPerDay * off) +
+            (salaryPerDay * weekend));
         // Math.pow(salaryPerDay, weekend) / 100 -
         // Math.pow(salaryPerDay, adv) / 100 -
         // Math.pow(salaryPerDay, off) / 100;
