@@ -156,5 +156,9 @@
   document.addEventListener('DOMContentLoaded', function() {
   $(".editMode").dblclick(function() { //console.log($(this));
   $(this).children()[0].className = "d-none";
-  $(this).children()[1].classList.remove("d-none"); }); });
+  $(this).children()[1].classList.remove("d-none"); }); 
+   $('.editMode input').on('blur', function() {
+     $(this).parents(".editMode").find('form').submit();
+  });
+  });
 </script>
