@@ -7,14 +7,13 @@ function route(app) {
   app.use("/users", usersRouter);
   app.use("/", usersRouter);
   app.use("/salary", salaryRouter);
+  // app.get("/search", (req, res) => {
+  //   res.render("search");
+  // });
 
-  app.get("/search", (req, res) => {
-    res.render("search");
-  });
-
-  app.post("/search", (req, res) => {
-    res.send("");
-  });
+  // app.post("/search", (req, res) => {
+  //   res.send("");
+  // });
 }
 
 module.exports = route;

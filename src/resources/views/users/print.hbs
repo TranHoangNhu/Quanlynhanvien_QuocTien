@@ -1,0 +1,65 @@
+<div class="container">
+  <h1 class="text-center mt-5">THÔNG TIN LƯƠNG
+    {{user.displayName}}</h1>
+  <div class="row justify-content-center">
+    <div class="col-4 p-4">
+      <p class="font-weight-bold">Số ngày nghỉ</p>
+      <h2 class="font-weight-bold fs-1 text-danger">{{user.offDay}}</h2>
+    </div>
+    <div class="col-4 p-4">
+      <p class="font-weight-bold">Làm thêm cuối tuần</p>
+      <h2 class="font-weight-bold fs-1 text-success">{{user.weekendDay}}</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-4 p-4">
+      <p class="font-weight-bold">Lương căn bản</p>
+      <h2 class="font-weight-bold fs-1 text-secondary">{{currency
+          user.basicSalary
+          1
+        }}</h2>
+    </div>
+    <div class="col-4 p-4">
+      <p class="font-weight-bold">Lương thưởng</p>
+      <h2 class="font-weight-bold fs-1 text-success">{{currency
+          user.giftSalary
+          1
+        }}</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-4 p-4">
+      <p class="font-weight-bold">Lương trừ(Ứng, phạt,...)</p>
+      <h2 class="font-weight-bold fs-1 text-danger">{{currency
+          user.advanceSalary
+          1
+        }}</h2>
+    </div>
+    <div class="col-4 p-4">
+      <p class="font-weight-bold">Tiền thực nhận</p>
+      <h2 class="font-weight-bold fs-1 text-success">{{netSalary
+          user.basicSalary
+          user.giftSalary
+          user.advanceSalary
+          user.weekendDay
+          user.offDay
+          user.totalDay
+        }}</h2>
+    </div>
+  </div>
+</div>
+<button
+  type="button"
+  class="btn btn-warning float-right text-white font-weight-bold testPrint"
+>hiện thị vùng in</button>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  $('.testPrint').click(function(){ $('.container').printThis({
+  importCSS:
+  "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css",
+  header: '<img src="https://img.ws.mms.shopee.vn/4b6b55f768425dbc4c6cfee1a97b0f4c" alt="header" class="w-100 mb-5">',
+  footer:  '<img src="https://d2gdtie5ivbdow.cloudfront.net/media/user/images/isdesign.png" alt="header" class="w-100" style="position: fixed; bottom: 0;">'
+  }); 
+  }) 
+  })
+</script>

@@ -39,6 +39,16 @@ class userController {
       .catch(next);
   }
 
+  print(req, res, next) {
+    User.findById(req.params.id)
+      .then((user) =>
+        res.render("users/print", {
+          user: mongooseToObject(user),
+        })
+      )
+      .catch(next);
+  }
+
   update(req, res, next) {
     User.updateOne({ _id: req.params.id }, req.body)
       .then(() => res.redirect("/"))
