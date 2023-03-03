@@ -1,7 +1,8 @@
-<h1 class="text-center mt-3">CẬP NHẬT THÔNG TIN NHÂN VIÊN</h1>
-<form method="post" action="/users/{{user._id}}?_method=PUT">
-  <div class="form-group">
-    <label for="displayName">Tên Nhân Viên</label>
+<div class="bg-light bg-dark">
+  <h1 class="text-center mt-5 pt-5 text-warning font-weight-bold">CẬP NHẬT THÔNG TIN NHÂN VIÊN</h1>
+<form method="post" action="/users/{{user._id}}?_method=PUT" class="row mx-auto px-5">
+  <div class="form-group col-xs-12 col-md-6">
+    <label class="font-weight-bold text-white my-3" for="displayName">Tên Nhân Viên</label>
     <input
       type="text"
       class="form-control"
@@ -10,8 +11,8 @@
       name="displayName"
     />
   </div>
-  <div class="form-group">
-    <label for="basicSalary">Lương căn bản</label>
+  <div class="form-group col-xs-12 col-md-6">
+    <label class="font-weight-bold text-white my-3" for="basicSalary">Lương căn bản</label>
     <input
       type="number"
       class="form-control"
@@ -20,8 +21,8 @@
       name="basicSalary"
     />
   </div>
-  <div class="form-group">
-    <label for="position">Chức vụ</label>
+  <div class="form-group col-xs-12 col-md-6">
+    <label class="font-weight-bold text-white my-3" for="position">Chức vụ</label>
     <input
       type="text"
       class="form-control"
@@ -30,8 +31,8 @@
       name="position"
     />
   </div>
-  <div class="form-group">
-    <label for="startDay">Ngày vào làm</label>
+  <div class="form-group col-xs-12 col-md-6">
+    <label class="font-weight-bold text-white my-3" for="startDay">Ngày vào làm</label>
     <input
       type="text"
       class="form-control"
@@ -40,5 +41,6 @@
       name="startDay"
     />
   </div>
-  <button type="submit" class="btn btn-success float-right my-3">Cập nhật</button>
+  <button type="submit" class="btn btn-success float-right my-5 mx-auto px-3">Cập nhật</button>
 </form>
+</div>

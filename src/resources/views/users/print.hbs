@@ -1,25 +1,25 @@
-<div class="container">
+<div class="container bg-light p-5">
   <h1 class="text-center mt-5">THÔNG TIN LƯƠNG
     {{user.displayName}}</h1>
   <div class="row justify-content-center">
-    <div class="col-4 p-4">
+    <div class="col-4 p-4 text-center">
       <p class="font-weight-bold">Số ngày nghỉ</p>
       <h2 class="font-weight-bold fs-1 text-danger">{{user.offDay}}</h2>
     </div>
-    <div class="col-4 p-4">
+    <div class="col-4 p-4 text-center">
       <p class="font-weight-bold">Làm thêm cuối tuần</p>
       <h2 class="font-weight-bold fs-1 text-success">{{user.weekendDay}}</h2>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-4 p-4">
+    <div class="col-4 p-4 text-center">
       <p class="font-weight-bold">Lương căn bản</p>
       <h2 class="font-weight-bold fs-1 text-secondary">{{currency
           user.basicSalary
           1
         }}</h2>
     </div>
-    <div class="col-4 p-4">
+    <div class="col-4 p-4 text-center">
       <p class="font-weight-bold">Lương thưởng</p>
       <h2 class="font-weight-bold fs-1 text-success">{{currency
           user.giftSalary
@@ -28,14 +28,14 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-4 p-4">
+    <div class="col-4 p-4 text-center">
       <p class="font-weight-bold">Lương trừ(Ứng, phạt,...)</p>
       <h2 class="font-weight-bold fs-1 text-danger">{{currency
           user.advanceSalary
           1
         }}</h2>
     </div>
-    <div class="col-4 p-4">
+    <div class="col-4 p-4 text-center">
       <p class="font-weight-bold">Tiền thực nhận</p>
       <h2 class="font-weight-bold fs-1 text-success">{{netSalary
           user.basicSalary
